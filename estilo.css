@@ -1,0 +1,227 @@
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== FUNDO PARALLAX ===== */
+body {
+  font-family: Arial, sans-serif;
+  background: url('img/cptec.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #eee;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: -1;
+}
+
+/* ===== CABEÇALHO ===== */
+header {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 3px solid #888;
+}
+
+/* ===== MENU ===== */
+nav {
+  background: rgba(95, 19, 19, 0.9);
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px 0;
+}
+
+nav a {
+  color: #ddd;
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  transition: 0.3s;
+}
+
+nav a::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  background: #4d1111;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== MAIN ===== */
+main {
+  margin: 40px auto;
+  padding: 40px;
+  max-width: 900px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  animation: aparecer 1s ease;
+}
+
+/* ===== ANIMAÇÃO ===== */
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== GRID DE NOMES ===== */
+.linha-nomes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+/* ===== BLOCO ===== */
+.bloco {
+  text-align: center;
+}
+
+/* ===== BOTÕES DOS NOMES ===== */
+.palavra {
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+
+  padding: 12px 25px;
+  background: rgba(95, 19, 19, 0.9);
+  color: #fff;
+
+  border: 2px solid #4d1111;
+  border-radius: 12px;
+
+  text-shadow: 0 0 6px rgba(0,0,0,0.6);
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  transition: 0.3s;
+}
+
+.palavra:hover {
+  background: #4d1111;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255,255,255,0.4), 0 0 8px rgba(0,0,0,0.5);
+  animation: pulse 0.4s ease;
+}
+
+.palavra:active {
+  transform: scale(0.95);
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+/* ===== IMAGENS ===== */
+.imagem-container {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.imagem-container.mostrar {
+  max-height: 350px;
+  opacity: 1;
+}
+
+/* ===== GLASS EFFECT NA IMAGEM ===== */
+.imagem-container img {
+  width: 250px;
+  border-radius: 12px;
+  margin-top: 15px;
+
+  background: rgba(255,255,255,0.12);
+  padding: 8px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* ============================================================
+   CORES POR GRUPO
+   (Adicione as classes no HTML: conteudo, design, desenvolvimento, entrega)
+   ============================================================ */
+
+.conteudo .palavra {
+  background: #2e7d32;
+  border-color: #1b5e20;
+}
+.conteudo .palavra:hover {
+  background: #1b5e20;
+}
+
+.design .palavra {
+  background: #1565c0;
+  border-color: #0d47a1;
+}
+.design .palavra:hover {
+  background: #0d47a1;
+}
+
+.desenvolvimento .palavra {
+  background: #6a1b9a;
+  border-color: #4a148c;
+}
+.desenvolvimento .palavra:hover {
+  background: #4a148c;
+}
+
+.entrega .palavra {
+  background: #c62828;
+  border-color: #8e0000;
+}
+.entrega .palavra:hover {
+  background: #8e0000;
+}
+
+/* ====================== RESPONSIVIDADE ====================== */
+
+@media (max-width: 700px) {
+  .palavra {
+    font-size: 22px;
+    padding: 10px 18px;
+  }
+
+  .imagem-container img {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .linha-nomes {
+    gap: 20px;
+  }
+
+  .palavra {
+    font-size: 20px;
+    padding: 8px 16px;
+  }
+
+  .imagem-container img {
+    width: 170px;
+  }
+}
